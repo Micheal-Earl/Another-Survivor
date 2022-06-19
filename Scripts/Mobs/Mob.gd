@@ -24,12 +24,12 @@ func move(direction):
 func animate_while_moving() -> void:
 	if $Sprite.scale.y <= 1.01:
 		animate_while_moving_flag = true;
-	elif $Sprite.scale.y >= 1.1:
+	elif $Sprite.scale.y >= 1.13:
 		animate_while_moving_flag = false;
 	if velocity.length() > 1:
 		if animate_while_moving_flag:
-			$Sprite.scale.y = lerp($Sprite.scale.y, 1.11, 0.2)
+			$Sprite.scale.y = lerp($Sprite.scale.y, 1.14, 0.3)
 		else:
-			$Sprite.scale.y = lerp($Sprite.scale.y, 1, 0.2)
+			$Sprite.scale.y = lerp($Sprite.scale.y, 1, 0.3)
 	else:
-		$Sprite.scale.y = lerp($Sprite.scale.y, 1, 0.2)
+		$Sprite.scale.y = lerp($Sprite.scale.y, 1, 0.3)

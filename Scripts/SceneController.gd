@@ -12,7 +12,6 @@ func _ready():
 
 func _process(delta):
 	time_until_next_enemy -= delta
-	print(time_until_next_enemy)
 	if time_until_next_enemy < 0:
 		time_until_next_enemy = 3
 		spawn_enemy()

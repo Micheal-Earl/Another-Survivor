@@ -4,6 +4,7 @@ var player_reference: Player
 var direction_to_player: Vector2
 
 func _ready():
+	#self.add_to_group("mobs")
 	speed = 40
 	health = 10
 
