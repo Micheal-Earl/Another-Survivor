@@ -9,6 +9,7 @@ func _ready():
 	pass
 
 func _physics_process(delta):
+	._physics_process(delta)
 	angle = (.get_global_mouse_position() - self.global_position).angle()
 	flip_sprite(angle)
 	move(get_input())
@@ -34,9 +35,6 @@ func flip_sprite(look_angle):
 	elif (angle < -1.5 or angle > 1.5) and facing_right == true:
 		facing_right = false
 		$Sprite.scale.x = -1
-
-func move(direction):
-	.move(direction)
 
 func shoot():
 	var b = bullet.instance()
