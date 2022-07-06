@@ -5,54 +5,61 @@ onready var global = get_node("/root/Global")
 
 export (PackedScene) var bullet
 
+var movement_velocity = Vector2()
 var angle = Vector2.RIGHT
 var level = 1
 var experience = 0
 var max_immunity_time = 1
 var current_immunity_time = 0
+var max_shoot_cooldown: float = 0.3
+var shoot_cooldown: float = 0
 
 func _ready():
 	Global.register_player(self)
 	update_label()
 	._ready()
 
-func _process(delta):
+func _process(_delta):
 	check_for_level_up()
 
 func _physics_process(delta):
 	current_immunity_time -= delta
+	shoot_cooldown -= delta
+	print(shoot_cooldown)
 	angle = (.get_global_mouse_position() - self.global_position).angle()
 	flip_sprite(angle)
-	move(get_input())
+	move(movement_velocity)
 	._physics_process(delta)
 
 func get_input():
-	if Input.is_action_just_pressed("shoot"):
+	movement_velocity.x = 0
+	movement_velocity.y = 0
+	if Input.is_action_pressed("shoot"):
 		shoot()
-	var input = Vector2()
 	if Input.is_action_pressed('right'):
-		input.x += 1
+		movement_velocity.x += 1
 	if Input.is_action_pressed('left'):
-		input.x -= 1
+		movement_velocity.x -= 1
 	if Input.is_action_pressed('down'):
-		input.y += 1
+		movement_velocity.y += 1
 	if Input.is_action_pressed('up'):
-		input.y -= 1
-	return input
+		movement_velocity.y -= 1
 
 func flip_sprite(look_angle):
-	if (angle > -1.5 and angle < 1.5) and facing_right == false:
+	if (look_angle > -1.5 and angle < 1.5) and facing_right == false:
 		facing_right = true
 		$Sprite.scale.x = 1
-	elif (angle < -1.5 or angle > 1.5) and facing_right == true:
+	elif (look_angle < -1.5 or angle > 1.5) and facing_right == true:
 		facing_right = false
 		$Sprite.scale.x = -1
 
 func shoot():
-	var b = bullet.instance()
-	owner.add_child(b)
-	b.transform = $"Gun/Muzzle".global_transform
-	b.get_node("Sprite").rotation_degrees = 90;
+	if shoot_cooldown <= 0:
+		var b = bullet.instance()
+		owner.add_child(b)
+		b.transform = $"Gun/Muzzle".global_transform
+		b.get_node("Sprite").rotation_degrees = 90;
+		shoot_cooldown = max_shoot_cooldown
 
 func lose_health(amount):
 	if current_immunity_time <= 0:

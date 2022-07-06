@@ -28,7 +28,7 @@ _global_script_class_icons={
 
 config/name="Another Survivor"
 run/main_scene="res://Scenes/Main.tscn"
-config/icon="res://Assets/icon.png"
+config/icon="res://Assets/Base Images/icon.png"
 
 [autoload]
 

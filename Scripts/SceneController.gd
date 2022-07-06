@@ -4,7 +4,7 @@ export (PackedScene) var enemy
 
 var player_position
 var enemies = []
-var time_until_next_enemy = 1
+var time_until_next_enemy = 0.5
 var rng = RandomNumberGenerator.new()
 
 func _ready():
@@ -13,7 +13,7 @@ func _ready():
 func _process(delta):
 	time_until_next_enemy -= delta
 	if time_until_next_enemy < 0:
-		time_until_next_enemy = 1
+		time_until_next_enemy = 0.5
 		spawn_enemy()
 	player_position = $Player.position
 

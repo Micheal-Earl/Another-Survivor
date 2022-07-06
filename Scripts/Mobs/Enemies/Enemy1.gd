@@ -28,6 +28,7 @@ func spawn_experience_on_death() -> void:
 func handle_collisions() -> void:
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
-		if collision.collider.is_in_group("player"):
-			collision.collider.lose_health(10)
-		print("I collided with ", collision.collider.name)
+		if collision.collider != null:
+			if collision.collider.is_in_group("player"):
+				collision.collider.lose_health(10)
+			#print("I collided with ", collision.collider.name)

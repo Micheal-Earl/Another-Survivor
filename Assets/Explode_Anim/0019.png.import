@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Dungeon_Tileset.png-92fff66eaabfa4d2f129c733489db25a.stex"
+path="res://.import/0019.png-2200711b069e3837595efddf276e24b2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Dungeon_Tileset.png"
-dest_files=[ "res://.import/Dungeon_Tileset.png-92fff66eaabfa4d2f129c733489db25a.stex" ]
+source_file="res://Assets/Explode_Anim/0019.png"
+dest_files=[ "res://.import/0019.png-2200711b069e3837595efddf276e24b2.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
